@@ -1,0 +1,17 @@
+.vscode/
+ESC.dSYM/
+hp.dSYM/
+inventory.dSYM/
+main.dSYM/
+shop.dSYM/
+tes.dSYM/
+test.dSYM/
+xo.dSYM/
+*.
+ecs
+hp
+main
+shop
+test
+xo
+.DS_Store
