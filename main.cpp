@@ -334,11 +334,5 @@ int main()
         cout<<"\n\nCurious about the origin of the light, Elara chooses to solve the riddle it presents.\n\nShe believes that unraveling the mystery of the light may unveil hidden truths or lead\n\nher to a powerful artifact capable of breaking Avaloria's curse.";
 
     }
-
-<<<<<<< HEAD
-return 0; //hhh
-}
-=======
 return 0;
 }
->>>>>>> origin/main
