@@ -335,5 +335,10 @@ int main()
 
     }
 
+<<<<<<< HEAD
+return 0; //hhh
+}
+=======
 return 0;
 }
+>>>>>>> origin/main
