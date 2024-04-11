@@ -3,11 +3,155 @@
 #include <cstdlib>
 #include <cmath>
 using namespace std;
-int healingPotionCount=0;
-int bombCount=0;
+int healingPotionCount=2;
+int bombCount=1;
 int megaBombCount=0;
 int coins=100;
 int hp=100;
+void inventory ();
+bool riddles();
+void shop (int &);
+void fight (int &);
+int main() 
+{
+    cout<<"\n"<<endl;
+    cout<<"   ▄████████   ▄█    █▄     ▄████████  ▄█        ▄██████▄     ▄████████  ▄█     ▄████████  "<<endl;
+    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███   ███    ███ ███    ███    ███ "<<endl;
+    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███   ███    ███ ███▌   ███    ███ "<<endl;
+    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███  ▄███▄▄▄▄██▀ ███▌   ███    ███ "<<endl;
+    cout<<" ▀███████████ ███    ███ ▀███████████ ███       ███    ███ ▀▀███▀▀▀▀▀   ███▌ ▀███████████ "<<endl;
+    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███ ▀███████████ ███    ███    ███ "<<endl;
+    cout<<"   ███    ███ ███    ███   ███    ███ ███▌    ▄ ███    ███   ███    ███ ███    ███    ███ "<<endl;
+    cout<<"   ███    █▀   ▀██████▀    ███    █▀  █████▄▄██  ▀██████▀    ███    ███ █▀     ███    █▀  "<<endl;
+    cout<<"                                      ▀                      ███    ███                   "<<endl;
+    srand (time(0));
+    int en_ex;
+    while (true)
+    {
+        cout<<"\n\n"<<endl;
+        cout<<" \t\t        1. ┌─┐┬  ┌─┐┬ ┬            2. ╔═╗ ─┐ ┬ ┬┌┬┐"<<endl;
+        cout<<" \t\t           ├─┘│  ├─┤└┬┘               ║╣  ┌┴┬┘ │ │ "<<endl;
+        cout<<" \t\t           ┴  ┴─┘┴ ┴ ┴                ╚═╝ ┴ └─ ┴ ┴ "<<endl;
+        cin>>en_ex;
+        if (en_ex == 1)
+            {
+                break;
+            }
+        else
+            {
+                continue;
+            }
+    }
+    int choice_1;
+    cout<<"\n\n Avaloria, a mystical realm filled with magic and ancient curses, lived a young witch named Elara.\n\n She came from a lineage of powerful witches who had ruled over Avaloria for centuries, using their magic to control the land.\n\n However, their quest for power led them to place a curse on Avaloria, causing suffering to its people.\n\n Feeling torn between loyalty to her family and a desire to undo their wrongs, Elara embarked on a quest to break the curse.\n\n With courage and determination, she journeyed through Avaloria, encountering allies and adversaries, all while seeking redemption for her\n\n family's past actions.\n\n"<<endl;
+    cout<<"Elara, tired of her family's curse on Avaloria, ran away from home to try and make things right.\n\nWhile wandering through a thick forest, she saw a strange light shining through the trees."<<endl;
+    cout<<"\n\nChoose your own story. YOUR CHOICE MATTER \n\n1. Explore Forest (Elara ventures deeper into the woods.)\n\n2. Follow Light (Elara follows the mysterious light.)"<<endl;
+    do
+    {
+        cin>>choice_1;
+            switch (choice_1)
+        {
+        case 1:
+            cout<<"\n\nElara ventures deeper into the woods, hoping to uncover hidden knowledge that may aid her quest for redemption.\n\nShe believes that the mysteries of the forest hold secrets that could help break Avaloria's curse."<<endl;
+            break;
+        case 2:
+            cout<<"\n\nIntrigued by the magical aura of the light, Elara chooses to follow it,\n\nbelieving it may lead her to a source of wisdom or guidance that could help her understand\n\nhow to break Avaloria's curse."<<endl;
+            break;
+        default:
+            cout<<"\nInvalid Choice Choose Another : ";
+            break;
+        }
+    }while(choice_1 != 1 && choice_1 != 2);
+    char shop_yn;
+    char inv;
+    if (choice_1 == 1)
+    {
+        cout<<"\n\nDriven by a desire for ancient wisdom, Elara stumbles upon ruins hidden within the forest.\n\nShe believes that exploring these ruins may lead her to forgotten spells or artifacts\n\ncapable of breaking Avaloria's curse.";
+        cout <<"\n\nWhile exploring the ruins, Elara found a magical door that is secured by a riddle, beware the door only asks once\n\nif answered incorrectly you will not be able to continue this path.";
+        cout<<"\n\nThe riddle says : ";
+        if (riddles()==false)
+        {
+            cout<<"\n\nYou answed the door riddle wrong, Elara is forced to continue following the light\n\nit is her only option.";
+            choice_1=2;
+        }
+        else{
+                cout<<"\n\nThe door opened, and there Elara found The Duke he is a merchant";
+            do
+            {
+                cout<<"\n\nDo you want to see what The Duke has to offer Y/N ";
+                cin>>shop_yn;
+                shop_yn=toupper(shop_yn);
+                if (shop_yn != 'Y' && shop_yn != 'N')
+                {
+                    cout<<"\n\nInvalid choice";
+                }
+            } while (shop_yn!='Y'&&shop_yn!='N');
+
+            if (shop_yn == 'Y')
+            {
+                shop(coins);
+                cout<<"\n\nYou have "<<coins<<" coins left";
+                cout<<"\n\nPress E to enter inventory or any other button to continue ";
+                cin>>inv;
+                inv=toupper(inv);
+                if (inv == 'E')
+                {
+                    inventory();
+                }
+            }
+            cout<<"\n\nChapter 1 : The Fight Begins";
+            cout<<"\n\nWhile walking through the ruins Elara stumbles upon a group of wizards.\n\n Trying to negotiate with them to join here \n\nwith the fight for the lifting the curse upon avaloria";
+            cout<<"\n\nWizards : The only way to join you in the fight is to prove your power against our minions .\n\nElara braces herself for battle.";
+            fight(hp);
+
+
+            }
+    }
+    if (choice_1 == 2)
+    {
+        cout<<"\n\nCurious about the origin of the light, Elara chooses to solve the riddle it presents.\n\nShe believes that unraveling the mystery of the light may unveil hidden truths or lead\n\nher to a powerful artifact capable of breaking Avaloria's curse.";
+
+    }
+return 0;
+}
+
+void fight(int & hp) 
+{
+    int max_hp;
+    int heal_potion;
+    heal_potion=3;
+    cout<<hp<<endl;
+    cout<<"Press H to heal F to fight";
+    char heal_fight;
+    cin>>heal_fight;
+    heal_fight=toupper(heal_fight);
+    if (heal_fight == 'H')
+    {   
+        if (hp>0 & hp<100)
+        {
+            if (hp>80)
+            {
+                max_hp=100-hp;
+                hp+=max_hp;
+                cout<<hp<<endl;
+                heal_potion -=1;
+                cout<<"You still have "<< heal_potion<<" heal potions"<<endl;
+            }
+            else
+            {   
+                hp+=20;
+                heal_potion -=1;
+                cout<<hp<<endl;
+                cout<<"You still have "<< heal_potion<<" heal potions"<<endl;
+            }
+        }
+        if (hp>=100)
+        {
+            cout<<"Your health is full "<<hp<<endl;
+        }
+    }
+}
+
 void inventory()
 {
     char choice;
@@ -252,110 +396,3 @@ char buy;
         }
     }
 }
-
-
-
-
-int main() 
-{
-    cout<<"\n"<<endl;
-    cout<<"   ▄████████   ▄█    █▄     ▄████████  ▄█        ▄██████▄     ▄████████  ▄█     ▄████████  "<<endl;
-    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███   ███    ███ ███    ███    ███ "<<endl;
-    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███   ███    ███ ███▌   ███    ███ "<<endl;
-    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███  ▄███▄▄▄▄██▀ ███▌   ███    ███ "<<endl;
-    cout<<" ▀███████████ ███    ███ ▀███████████ ███       ███    ███ ▀▀███▀▀▀▀▀   ███▌ ▀███████████ "<<endl;
-    cout<<"   ███    ███ ███    ███   ███    ███ ███       ███    ███ ▀███████████ ███    ███    ███ "<<endl;
-    cout<<"   ███    ███ ███    ███   ███    ███ ███▌    ▄ ███    ███   ███    ███ ███    ███    ███ "<<endl;
-    cout<<"   ███    █▀   ▀██████▀    ███    █▀  █████▄▄██  ▀██████▀    ███    ███ █▀     ███    █▀  "<<endl;
-    cout<<"                                      ▀                      ███    ███                   "<<endl;
-    srand (time(0));
-    int en_ex;
-    while (true)
-    {
-        cout<<"\n\n"<<endl;
-        cout<<" \t\t        1. ┌─┐┬  ┌─┐┬ ┬            2. ╔═╗ ─┐ ┬ ┬┌┬┐"<<endl;
-        cout<<" \t\t           ├─┘│  ├─┤└┬┘               ║╣  ┌┴┬┘ │ │ "<<endl;
-        cout<<" \t\t           ┴  ┴─┘┴ ┴ ┴                ╚═╝ ┴ └─ ┴ ┴ "<<endl;
-        cin>>en_ex;
-        if (en_ex == 1)
-            {
-                break;
-            }
-        else
-            {
-                continue;
-            }
-    }
-    int choice_1;
-    cout<<"\n\n Avaloria, a mystical realm filled with magic and ancient curses, lived a young witch named Elara.\n\n She came from a lineage of powerful witches who had ruled over Avaloria for centuries, using their magic to control the land.\n\n However, their quest for power led them to place a curse on Avaloria, causing suffering to its people.\n\n Feeling torn between loyalty to her family and a desire to undo their wrongs, Elara embarked on a quest to break the curse.\n\n With courage and determination, she journeyed through Avaloria, encountering allies and adversaries, all while seeking redemption for her\n\n family's past actions.\n\n"<<endl;
-    cout<<"Elara, tired of her family's curse on Avaloria, ran away from home to try and make things right.\n\nWhile wandering through a thick forest, she saw a strange light shining through the trees."<<endl;
-    cout<<"\n\nChoose your own story. YOUR CHOICE MATTER \n\n1. Explore Forest (Elara ventures deeper into the woods.)\n\n2. Follow Light (Elara follows the mysterious light.)"<<endl;
-    do
-    {
-        cin>>choice_1;
-            switch (choice_1)
-        {
-        case 1:
-            cout<<"\n\nElara ventures deeper into the woods, hoping to uncover hidden knowledge that may aid her quest for redemption.\n\nShe believes that the mysteries of the forest hold secrets that could help break Avaloria's curse."<<endl;
-            break;
-        case 2:
-            cout<<"\n\nIntrigued by the magical aura of the light, Elara chooses to follow it,\n\nbelieving it may lead her to a source of wisdom or guidance that could help her understand\n\nhow to break Avaloria's curse."<<endl;
-            break;
-        default:
-            cout<<"\nInvalid Choice Choose Another : ";
-            break;
-        }
-    }while(choice_1 != 1 && choice_1 != 2);
-    char shop_yn;
-    char inv;
-    if (choice_1 == 1)
-    {
-        cout<<"\n\nDriven by a desire for ancient wisdom, Elara stumbles upon ruins hidden within the forest.\n\nShe believes that exploring these ruins may lead her to forgotten spells or artifacts\n\ncapable of breaking Avaloria's curse.";
-        cout <<"\n\nWhile exploring the ruins, Elara found a magical door that is secured by a riddle, beware the door only asks once\n\nif answered incorrectly you will not be able to continue this path.";
-        cout<<"\n\nThe riddle says : ";
-        if (riddles()==false)
-        {
-            cout<<"\n\nYou answed the door riddle wrong, Elara is forced to continue following the light\n\nit is her only option.";
-            choice_1=2;
-        }
-        else{
-                cout<<"\n\nThe door opened, and there Elara found The Duke he is a merchant";
-            do
-            {
-                cout<<"\n\nDo you want to see what The Duke has to offer Y/N ";
-                cin>>shop_yn;
-                shop_yn=toupper(shop_yn);
-                if (shop_yn != 'Y' && shop_yn != 'N')
-                {
-                    cout<<"\n\nInvalid choice";
-                }
-            } while (shop_yn!='Y'&&shop_yn!='N');
-
-            if (shop_yn == 'Y')
-            {
-                shop(coins);
-                cout<<"\n\nYou have "<<coins<<" coins left";
-                cout<<"\n\nPress E to enter inventory or any other button to continue ";
-                cin>>inv;
-                inv=toupper(inv);
-                if (inv == 'E')
-                {
-                    inventory();
-                }
-                
-            }
-            }
-
-    }
-    if (choice_1 == 2)
-    {
-        cout<<"\n\nCurious about the origin of the light, Elara chooses to solve the riddle it presents.\n\nShe believes that unraveling the mystery of the light may unveil hidden truths or lead\n\nher to a powerful artifact capable of breaking Avaloria's curse.";
-
-    }
-return 0;
-}
-
-           
-            
-
-       
