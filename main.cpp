@@ -6,7 +6,7 @@ using namespace std;
 int healingPotionCount=0;
 int bombCount=0;
 int megaBombCount=0;
-int coins;
+int coins=100;
 int hp=100;
 void inventory()
 {
@@ -25,9 +25,132 @@ void inventory()
     }
     }
 }
+bool riddles()
+{
+        int x;
+        char c;
+        c=true;
+    srand (time(0));
+    int dice= rand()%5;
+    if (dice==0)
+    {cout<<"I speak without a mouth and hear without ears. I have no body, but I come alive with the wind.\n"
+    <<"1. echo"<<setw(12)<<"2. wind"<<setw(13)<<"3. sound"<<setw(14)<<"4. voice" "\n";
+    cout<<"Enter choice ";
+    cin>>x;
+    while (x>4)
+    {
+        cout<<"invalid input\nreenter choice ";
+        cin>>x;
+    }
+    if (x==1){
+    cout<<"correct"<<endl;
+    cout<<"you earned 100 coins"<<endl;
+    coins=coins+100;
+    }
+
+    else
+    {
+    cout<<"wrong";
+    c=false;
+    }
+    }
+    else if (dice==1)
+    {
+        cout<<"What has keys but can't open locks?\n"<<
+        "1. typewriter"<<setw(16)<<"2. keyboard"<<setw(13)<< "3. piano"<<setw(19)<<" 4. calculator\n";
+        cout<<"\nEnter choice ";
+        cin>>x;
+        while (x>4)
+    {
+        cout<<"\n\nInvalid input\nReenter choice";
+        cin>>x;
+    }
+        if (x==3){
+        cout<<"\n\nCorrect\n\n";
+        cout<<"You earned 100 coins\n\n";
+        coins=coins+100;
+        cout<<"You now have "<<coins<<" coins\n\n";}
+        else
+        {
+        cout<<"\n\nWrong";
+        c=false;
+        }
+    }
+    else if (dice==2)
+    {
+        
+        cout<<"The more you take, the more you leave behind. What am I?\n"
+        <<"1. time"<<setw(17)<<"2. footsteps"<<setw(13)<<"3. aging"<<setw(16)<<"4. memories\n";
+        cout<<"\nEnter choice ";
+        cin>>x;
+        while (x>4)
+    {
+        cout<<"invalid input\nReenter choice ";
+        cin>>x;
+    }
+        if (x==2){
+        cout<<"\n\nCorrect\n\n";
+        cout<<"You earned 100 coins\n\n";
+        coins=coins+100;
+        cout<<"You now have "<<coins<<" coins\n\n";}
+        else
+        {
+        cout<<"\n\nWrong";
+        c=false;
+        }
+    }
+    else if(dice==3)
+    {
+        cout<<"What can travel around the world while staying in a corner?\n"<<
+    "1. stamp"<<setw(15)<<"2. a globe"<<setw(17)<<"3. a thought"<<setw(19)<<"4. information\n";
+        cout<<"\n\nEnter choice";
+        cin>>x;
+        while (x>4)
+    {
+        cout<<"\n\nInvalid input\nReenter choice ";
+        cin>>x;
+    }
+        if (x==1){
+        cout<<"\nCorrect\n\n";
+        cout<<"You earned 100 coins\n\n";
+        coins=coins+100;
+        cout<<"You now have "<<coins<<" coins\n\n";}
+        else
+        {
+        cout<<"\nWrong";
+        c=false;   
+        }
+        
+    }
+    else if (dice==4)
+    {
+        cout<<"The more you have of it, the less you see. What is it?\n"<<
+        "1. blindness"<<setw(17)<<"2. ignorance"<<setw(16)<<"3. darkness"<<setw(16)<<"4. illusion\n";
+        cout<<"\nEnter choice ";
+        cin>>x;
+        while (x>4)
+    {
+        cout<<"\nInvalid input\nreenter choice";
+        cin>>x;
+    }
+        if (x==3){
+        cout<<"\nCorrect\n\n";
+        cout<<"You earned 100 coins\n\n";
+        coins=coins+100;
+        cout<<"You now have "<<coins<<" coins\n\n";}
+        else
+        {
+        cout<<"\nWrong";
+        c=false;
+        }
+
+    }
+return c;
+}
+
 void shop(int & coins)
 {
-coins=100;
+
 int item;
 char buy;
     cout<<"\n"<<endl;
@@ -130,112 +253,7 @@ char buy;
     }
 }
 
-bool riddles()
-{
-        int x;
-        char c;
-        c=true;
-    srand (time(0));
-    int dice= rand()%5;
-    if (dice==0)
-    {cout<<"I speak without a mouth and hear without ears. I have no body, but I come alive with the wind.\n"
-    <<"1. echo"<<setw(12)<<"2. wind"<<setw(13)<<"3. sound"<<setw(14)<<"4. voice" "\n";
-    cout<<"Enter choice ";
-    cin>>x;
-    while (x>4)
-    {
-        cout<<"invalid input\nreenter choice ";
-        cin>>x;
-    }
-    if (x==1)
-    cout<<"correct";
-    else
-    {
-    cout<<"wrong";
-    c=false;
-    }
-    }
-    else if (dice==1)
-    {
-        cout<<"What has keys but can't open locks?\n"<<
-        "1. typewriter"<<setw(16)<<"2. keyboard"<<setw(13)<< "3. piano"<<setw(19)<<" 4. calculator\n";
-        cout<<"\nEnter choice ";
-        cin>>x;
-        while (x>4)
-    {
-        cout<<"\n\nInvalid input\nReenter choice";
-        cin>>x;
-    }
-        if (x==3)
-        cout<<"\n\nCorrect";
-        else
-        {
-        cout<<"\n\nWrong";
-        c=false;
-        }
-    }
-    else if (dice==2)
-    {
-        
-        cout<<"The more you take, the more you leave behind. What am I?\n"
-        <<"1. time"<<setw(17)<<"2. footsteps"<<setw(13)<<"3. aging"<<setw(16)<<"4. memories\n";
-        cout<<"\nEnter choice ";
-        cin>>x;
-        while (x>4)
-    {
-        cout<<"invalid input\nReenter choice ";
-        cin>>x;
-    }
-        if (x==2)
-        cout<<"\n\nCorrect";
-        else
-        {
-        cout<<"\n\nWrong";
-        c=false;
-        }
-    }
-    else if(dice==3)
-    {
-        cout<<"What can travel around the world while staying in a corner?\n"<<
-    "1. stamp"<<setw(15)<<"2. a globe"<<setw(17)<<"3. a thought"<<setw(19)<<"4. information\n";
-        cout<<"\n\nEnter choice";
-        cin>>x;
-        while (x>4)
-    {
-        cout<<"\n\nInvalid input\nReenter choice ";
-        cin>>x;
-    }
-        if (x==1)
-        cout<<"\nCorrect";
-        else
-        {
-        cout<<"\nWrong";
-        c=false;   
-        }
-        
-    }
-    else if (dice==4)
-    {
-        cout<<"The more you have of it, the less you see. What is it?\n"<<
-        "1. blindness"<<setw(17)<<"2. ignorance"<<setw(16)<<"3. darkness"<<setw(16)<<"4. illusion\n";
-        cout<<"\nEnter choice ";
-        cin>>x;
-        while (x>4)
-    {
-        cout<<"\nInvalid input\nreenter choice";
-        cin>>x;
-    }
-        if (x==3)
-        cout<<"\nCorrect";
-        else
-        {
-        cout<<"\nWrong";
-        c=false;
-        }
 
-    }
-return c;
-}
 
 
 int main() 
@@ -336,3 +354,8 @@ int main()
     }
 return 0;
 }
+
+           
+            
+
+       
