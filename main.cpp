@@ -101,10 +101,10 @@ int main()
                     inventory();
                 }
             }
-            cout<<"\n\nChapter 1 : The Fight Begins";
-            cout<<"\n\nWhile walking through the ruins Elara stumbles upon a group of wizards.\n\n Trying to negotiate with them to join here \n\nwith the fight for the lifting the curse upon avaloria";
+            cout<<"\n\n\t\t****CHAPTER 1 : The Fight Begins*****";
+            cout<<"\n\nWhile walking through the ruins Elara stumbles upon a group of wizards.\n\nTrying to negotiate with them to join her \n\nwith the fight for the lifting the curse upon avaloria";
             cout<<"\n\nWizards : The only way to join you in the fight is to prove your power against our minions .\n\n";
-            cout<<"\n\n Three minions appeared, Elara braces herself for battle.\n\n";
+            cout<<"\n\nThree minions appeared, Elara braces herself for battle.\n\n";
             minions(healingPotionCount , player_hp , bombCount , megaBombCount);
             cout<<"\n\nYou Killed the 1st minion\n\n";
             minions(healingPotionCount , player_hp , bombCount , megaBombCount);
@@ -168,7 +168,7 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                                     {
                                         max_hp=100-player_hp;
                                         player_hp+=max_hp;
-                                        cout<<player_hp<<endl;
+                                        cout<<"\nYour HP is now "<<player_hp<<endl;
                                         healingPotionCount -=1;
                                         cout<<"\nYou still have "<< healingPotionCount<<" heal potions"<<endl;
                                     }
@@ -176,7 +176,7 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                                     {   
                                         player_hp+=20;
                                         healingPotionCount -=1;
-                                        cout<<player_hp<<endl;
+                                        cout<<"\nYour HP is now "<<player_hp<<endl;
                                         cout<<"\nYou still have "<< healingPotionCount<<" heal potions"<<endl;
                                     }
                             }
@@ -494,4 +494,3 @@ char buy;
             }
         }
     }
-}
