@@ -3,16 +3,16 @@
 #include <cstdlib>
 #include <cmath>
 using namespace std;
+void inventory ();
+bool riddles();
+void shop (int & );
+void minions(int & , int & , int & , int &);
 int healingPotionCount=2;
 int bombCount=1;
 int megaBombCount=0;
 int coins=100;
 int player_hp = 100;
 int player_damage = 15;
-void inventory ();
-bool riddles();
-void shop (int & );
-void minions(int & , int & , int & , int &);
 
 int main() 
 {
@@ -126,8 +126,8 @@ return 0;
 void minions(int & healingPotionCount , int & player_hp , int & bombCount , int & megaBombCount)
 {
         
-        int enemy_damage = 20;
-        int enemy_hp = 20;
+        int enemy_damage = 35;
+        int enemy_hp = 30;
         int max_hp;
         cout<<"HP "<<player_hp<<"\n"<<endl;
         cout<<"Minon HP "<<enemy_hp<<"\n"<<endl;
@@ -142,10 +142,22 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                     {
                         cout<<"You Died Try Again !\n"<<endl;
                         player_hp=100;
-                        enemy_hp=120;
+                        enemy_hp=30;
+                        if (healingPotionCount == 0)
+                        {
+                            healingPotionCount+=1;
+                            cout<<"You got 1 Healing potion";
+                        }
+                        if (bombCount == 0)
+                        {
+                            bombCount+=1;
+                            cout<<"You got 1 Bomb";
+                        }
+
                         continue;
                     }
-                cout<<"\n\npress H to Heal F to Fight press B to throw a Bomb and M to throw a Mega Bomb ";
+                cout<<"\n\nYou Have "<<healingPotionCount<<" Heal potions, "<<bombCount<<" Bombs, "<<megaBombCount<<" Mega Bombs" ;
+                cout<<"\n\nPress H to Heal, F to Fight, B to throw a Bomb, and M to throw a Mega Bomb ";
                 cin>>heal_fight;
                 heal_fight=toupper(heal_fight);
                 if (heal_fight == 'H')
@@ -197,20 +209,21 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                         cout<<"\n\nYou dont have enough bombs\n\n ";
                         continue;
                     }
-                                if (enemy_hp<=0 || player_hp<=0 )
-                                continue;
-                        else
-                            {
-                                enemy_hp=enemy_hp-80;
-                                if (enemy_hp<=0)
-                                continue;
-                                cout<<"\nMinoin HP is now "<<enemy_hp<<endl;
-                                player_hp=player_hp-enemy_damage;
-                                if (player_hp<=0 )
-                                continue;
-                                cout<<"\nYour HP is now "<<player_hp<<endl;
-                                continue;
-                            }
+                    bombCount-=1;
+                    if (enemy_hp<=0 || player_hp<=0 )
+                        continue;
+                    else
+                        {
+                            enemy_hp=enemy_hp-40;
+                            if (enemy_hp<=0)
+                            continue;
+                            cout<<"\nMinoin HP is now "<<enemy_hp<<endl;
+                            player_hp=player_hp-enemy_damage;
+                            if (player_hp<=0 )
+                            continue;
+                            cout<<"\nYour HP is now "<<player_hp<<endl;
+                            continue;
+                        }
                 }
                 if (heal_fight == 'M')
                 {
@@ -219,6 +232,7 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                         cout<<"\n\nYou dont have enough Mega bombs\n\n ";
                         continue;
                     }
+                    megaBombCount-=1;
                                 if (enemy_hp<=0 || player_hp<=0 )
                                 continue;
                         else
@@ -432,7 +446,7 @@ char buy;
         if (item == 2)
         {
             cout<<"\nYou have "<<coins<<" coins"<<endl;
-            cout<<"\nBomb : Damage: 80 , PRICE 80\n\nAre you sure you want to spend 80 coins on a Bomb ? Y/N ";
+            cout<<"\nBomb : Damage: 40 , PRICE 80\n\nAre you sure you want to spend 80 coins on a Bomb ? Y/N ";
             cin>>buy;
             if (buy=='Y' || buy =='y')
             {
