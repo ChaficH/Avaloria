@@ -7,11 +7,13 @@ int healingPotionCount=2;
 int bombCount=1;
 int megaBombCount=0;
 int coins=100;
-int hp=100;
+int player_hp = 100;
+int player_damage = 15;
 void inventory ();
 bool riddles();
-void shop (int &);
-void fight (int &);
+void shop (int & );
+void minions(int & , int & , int & , int &);
+
 int main() 
 {
     cout<<"\n"<<endl;
@@ -101,8 +103,14 @@ int main()
             }
             cout<<"\n\nChapter 1 : The Fight Begins";
             cout<<"\n\nWhile walking through the ruins Elara stumbles upon a group of wizards.\n\n Trying to negotiate with them to join here \n\nwith the fight for the lifting the curse upon avaloria";
-            cout<<"\n\nWizards : The only way to join you in the fight is to prove your power against our minions .\n\nElara braces herself for battle.";
-            fight(hp);
+            cout<<"\n\nWizards : The only way to join you in the fight is to prove your power against our minions .\n\n";
+            cout<<"\n\n Three minions appeared, Elara braces herself for battle.\n\n";
+            minions(healingPotionCount , player_hp , bombCount , megaBombCount);
+            cout<<"\n\nYou Killed the 1st minion\n\n";
+            minions(healingPotionCount , player_hp , bombCount , megaBombCount);
+            cout<<"\n\nYou Killed the 2nd minion\n\n";
+            minions(healingPotionCount , player_hp , bombCount , megaBombCount);
+            cout<<"\n\nYou Killed the 3rd minion\n\n";
 
 
             }
@@ -115,41 +123,118 @@ int main()
 return 0;
 }
 
-void fight(int & hp) 
+void minions(int & healingPotionCount , int & player_hp , int & bombCount , int & megaBombCount)
 {
-    int max_hp;
-    int heal_potion;
-    heal_potion=3;
-    cout<<hp<<endl;
-    cout<<"Press H to heal F to fight";
-    char heal_fight;
-    cin>>heal_fight;
-    heal_fight=toupper(heal_fight);
-    if (heal_fight == 'H')
-    {   
-        if (hp>0 & hp<100)
-        {
-            if (hp>80)
-            {
-                max_hp=100-hp;
-                hp+=max_hp;
-                cout<<hp<<endl;
-                heal_potion -=1;
-                cout<<"You still have "<< heal_potion<<" heal potions"<<endl;
-            }
-            else
+        
+        int enemy_damage = 20;
+        int enemy_hp = 20;
+        int max_hp;
+        cout<<"HP "<<player_hp<<"\n"<<endl;
+        cout<<"Minon HP "<<enemy_hp<<"\n"<<endl;
+        char heal_fight;
+        while (true)
             {   
-                hp+=20;
-                heal_potion -=1;
-                cout<<hp<<endl;
-                cout<<"You still have "<< heal_potion<<" heal potions"<<endl;
+                if (enemy_hp <=0)
+                {
+                    break;
+                }
+                if (player_hp<=0)
+                    {
+                        cout<<"You Died Try Again !\n"<<endl;
+                        player_hp=100;
+                        enemy_hp=120;
+                        continue;
+                    }
+                cout<<"\n\npress H to Heal F to Fight press B to throw a Bomb and M to throw a Mega Bomb ";
+                cin>>heal_fight;
+                heal_fight=toupper(heal_fight);
+                if (heal_fight == 'H')
+                    {   
+                        if (player_hp>0 & player_hp<100)
+                            {
+                                if (player_hp>80)
+                                    {
+                                        max_hp=100-player_hp;
+                                        player_hp+=max_hp;
+                                        cout<<player_hp<<endl;
+                                        healingPotionCount -=1;
+                                        cout<<"\nYou still have "<< healingPotionCount<<" heal potions"<<endl;
+                                    }
+                                else
+                                    {   
+                                        player_hp+=20;
+                                        healingPotionCount -=1;
+                                        cout<<player_hp<<endl;
+                                        cout<<"\nYou still have "<< healingPotionCount<<" heal potions"<<endl;
+                                    }
+                            }
+                        if (player_hp>=100)
+                            {
+                                cout<<"\nYour health is full "<<player_hp<<endl;
+                            }
+                    }
+                if (heal_fight == 'F')
+                    {
+                        if (enemy_hp<=0 || player_hp<=0 )
+                                continue;
+                        else
+                            {
+                                enemy_hp=enemy_hp-player_damage;
+                                if (enemy_hp<=0)
+                                continue;
+                                cout<<"\nMinoin HP is now "<<enemy_hp<<endl;
+                                player_hp=player_hp-enemy_damage;
+                                if (player_hp<=0 )
+                                continue;
+                                cout<<"\nYour HP is now "<<player_hp<<endl;
+                                continue;
+                            }
+                    }
+                if (heal_fight == 'B')
+                {
+                    if(bombCount == 0)
+                    {
+                        cout<<"\n\nYou dont have enough bombs\n\n ";
+                        continue;
+                    }
+                                if (enemy_hp<=0 || player_hp<=0 )
+                                continue;
+                        else
+                            {
+                                enemy_hp=enemy_hp-80;
+                                if (enemy_hp<=0)
+                                continue;
+                                cout<<"\nMinoin HP is now "<<enemy_hp<<endl;
+                                player_hp=player_hp-enemy_damage;
+                                if (player_hp<=0 )
+                                continue;
+                                cout<<"\nYour HP is now "<<player_hp<<endl;
+                                continue;
+                            }
+                }
+                if (heal_fight == 'M')
+                {
+                    if(megaBombCount == 0)
+                    {
+                        cout<<"\n\nYou dont have enough Mega bombs\n\n ";
+                        continue;
+                    }
+                                if (enemy_hp<=0 || player_hp<=0 )
+                                continue;
+                        else
+                            {
+                                enemy_hp=enemy_hp-enemy_hp;
+                                if (enemy_hp<=0)
+                                continue;
+                                cout<<"\nMinoin HP is now "<<enemy_hp<<endl;
+                                player_hp=player_hp-enemy_damage;
+                                if (player_hp<=0 )
+                                continue;
+                                cout<<"\nYour HP is now "<<player_hp<<endl;
+                                continue;
+                            }
+                }
             }
-        }
-        if (hp>=100)
-        {
-            cout<<"Your health is full "<<hp<<endl;
-        }
-    }
 }
 
 void inventory()
