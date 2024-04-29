@@ -278,7 +278,7 @@ int main()
         cout<<"\n\nThe riddle says : ";
         if (riddles()==false)
         {
-            cout<<"\n\nYou answed the door riddle wrong, Elara is forced to continue following the light\n\nit is her only option.";
+            cout<<"\n\nYou answered the door riddle wrong, Elara is forced to continue following the light\n\nit is her only option.";
             choice_1=2;
         }
         else{
