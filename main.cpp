@@ -7,6 +7,7 @@ void inventory ();
 bool riddles();
 void shop (int & );
 void minions(int & , int & , int & , int &);
+void rpc();
 int healingPotionCount=2;
 int bombCount=1;
 int megaBombCount=0;
@@ -46,36 +47,16 @@ int main()
     }
     int choice_1;
     cout<<"In the mystical realm of Avaloria, lived a young witch named Elara,\n\nher family of witches set a curse on the land. As she flees her ancestral home trying to break the curse,\n\nas she was wandering in the forest elara encounters a strange light in the forest."<<endl;
-    cout<<"\n\nChoose your own story. YOUR CHOICE MATTER \n\n1. Explore Forest (Elara ventures deeper into the woods.)\n\n2. Follow Light (Elara follows the mysterious light.)"<<endl;
-    do
-    {
-        cin>>choice_1;
-            switch (choice_1)
-        {
-        case 1:
-            cout<<"\n\nElara ventures deeper into the woods, hoping to uncover hidden knowledge that may aid her quest for redemption.\n\nShe believes that the mysteries of the forest hold secrets that could help break Avaloria's curse."<<endl;
-            break;
-        case 2:
-            cout<<"\n\nIntrigued by the magical aura of the light, Elara chooses to follow it,\n\nbelieving it may lead her to a source of wisdom or guidance that could help her understand\n\nhow to break Avaloria's curse."<<endl;
-            break;
-        default:
-            cout<<"\nInvalid Choice Choose Another : ";
-            break;
-        }
-    }while(choice_1 != 1 && choice_1 != 2);
     char shop_yn;
     char inv;
-    if (choice_1 == 1)
-    {
         cout<<"\n\nElara stumbles upon ruins hidden within the forest.";
-        cout <<"\n\nWhile exploring the ruins, Elara found a magical door that is secured by a riddle, beware the door only asks once\n\nif answered incorrectly you will not be able to continue this path.";
+        cout <<"\n\nWhile exploring the ruins, Elara found a magical door that is secured by a riddle";
         cout<<"\n\nThe riddle says : ";
-        if (riddles()==false)
+        while(riddles()==false)
         {
-            cout<<"\n\nYou answed the door riddle wrong, Elara is forced to continue following the light\n\nit is her only option.";
-            choice_1=2;
+        cout<<"\n\nYou answed the door riddle wrong, Try again.\n\n";
+        riddles();
         }
-        else{
                 cout<<"\n\nThe door opened, and there Elara found The Duke he is a merchant";
             do
             {
@@ -100,6 +81,7 @@ int main()
                     inventory();
                 }
             }
+        
             cout<<"\n\n\t\t****CHAPTER 1 : The Fight Begins*****";
             cout<<"\n\nWhile walking through the ruins Elara stumbles upon a group of wizards.\n\nTrying to negotiate with them to join her \n\nwith the fight for the lifting the curse upon avaloria";
             cout<<"\n\nWizards : The only way to join you in the fight is to prove your power against our minions .\n\n";
@@ -112,13 +94,6 @@ int main()
             cout<<"\n\nYou Killed the 3rd minion\n\n";
 
 
-            }
-    }
-    if (choice_1 == 2)
-    {
-        cout<<"\n\nCurious about the origin of the light, Elara chooses to solve the riddle it presents.\n\nShe believes that unraveling the mystery of the light may unveil hidden truths or lead\n\nher to a powerful artifact capable of breaking Avaloria's curse.";
-
-    }
 return 0;
 }
 
@@ -285,14 +260,14 @@ bool riddles()
         cin>>x;
     }
     if (x==1){
-    cout<<"correct"<<endl;
+    cout<<"\nCorrect"<<endl;
     cout<<"you earned 100 coins"<<endl;
     coins=coins+100;
     }
 
     else
     {
-    cout<<"wrong";
+    cout<<"\nWrong";
     c=false;
     }
     }
@@ -393,7 +368,7 @@ return c;
 void shop(int & coins)
 {
 
-int item;
+char item;
 char buy;
     cout<<"\n"<<endl;
     cout<<"   ▄████████    ▄█    █▄     ▄██████▄     ▄███████▄ "<<endl;
@@ -405,19 +380,14 @@ char buy;
     cout<<" ▄████████▀    ███    █▀     ▀██████▀   ▄████▀      "<<endl;
     while (true)
     {
-        cout<<"\n\nItems in shop :  1- Healing potion , 2- Bomb , 3- MegaBomb \n\nChoose an item by number or -1 to exit shop ";
+        cout<<"\n\nItems in shop :  'h' for Healing potion , 'b' for Bomb , 'm' for MegaBomb \n\nChoose an item by letter or 'e' to exit shop ";
         cin>>item;
-        if (item == -1)
+        if (item == 'e'|| item=='E')
         {
             break;
         }
-        if (item != 1 && item != 2 && item!=3)
-        {
-            cout<<"\nYou have "<<coins<<" coins"<<endl;
-            cout<<"\nChoose a valid item"<<endl;
-            continue;
-        }
-        if (item == 1)
+        
+        if (item == 'h'|| item=='H')
         {
             cout<<"\nYou have "<<coins<<" coins"<<endl;
             cout<<"\nHealing Potion : Heals 20 , PRICE 50\n\nAre you sure you want to spend 50 coins on a Healing Potion ? Y/N ";
@@ -442,7 +412,7 @@ char buy;
                 continue;
             }
         }
-        if (item == 2)
+        if (item == 'b'|| item=='B')
         {
             cout<<"\nYou have "<<coins<<" coins"<<endl;
             cout<<"\nBomb : Damage: 40 , PRICE 80\n\nAre you sure you want to spend 80 coins on a Bomb ? Y/N ";
@@ -467,7 +437,7 @@ char buy;
                 continue;
             }
         }
-        if (item == 3)
+        if (item == 'm'|| item=='M')
         {
             cout<<"\nYou have "<<coins<<" coins"<<endl;
             cout<<"\nMegaBomb : Kills enemies instantly , PRICE 500\n\nAre you sure you want to spend 500 coins on a MegaBomb ? Y/N ";
@@ -491,6 +461,55 @@ char buy;
             {
                 continue;
             }
+        if (item!='h' || item!='H' || item!='b' || item!='B' || item!='m' || item!='M' || item!='e' || item!='E')
+        {
+            cout<<"\nYou have "<<coins<<" coins"<<endl;
+            cout<<"\nChoose a valid item"<<endl;
+            continue;
+        }
         }
     }
+}
+
+void rpc(){
+    char Player_Choice;
+    char Comp_Choice;
+    int Comp_num;
+    int i=1;
+    int points_1=0,points_2=0;
+
+    while (i<=3){
+        cout<<"Enter your choice (R for rock, P for paper, S for scissors, E to exit)";
+        cin>>Player_Choice;
+        Player_Choice=toupper(Player_Choice);
+        if (Player_Choice == 'E'||Player_Choice == 'e'){
+            break;
+        }
+        Comp_num = rand() % 3;
+        if (Comp_num == 0)
+            Comp_Choice = 'R';
+        else if (Comp_num == 1)
+            Comp_Choice = 'P';
+        else
+            Comp_Choice = 'S';
+        cout<<"Computer chooses:"<<Comp_Choice<<endl;
+        if (Player_Choice == Comp_Choice){
+            cout<<"It's a tie"<<endl;
+            cout<<"Point for each"<<endl;
+        }
+        else if((Player_Choice == 'R' && Comp_Choice == 'S') || (Player_Choice == 'P' && Comp_Choice == 'R')||(Player_Choice == 'S' && Comp_Choice == 'P')){
+            points_1=points_1+1;
+            cout<<"You won a point"<<endl;
+        }
+            
+        else{
+            points_2=points_2+1;
+            cout<<"Computer wins a point"<<endl;
+        }
+        i=i+1;
+     }
+     if (points_1>points_2)
+        cout<<"You win the game!"<<endl;
+     else
+      cout<<"You lost the game!"<<endl;
 }
