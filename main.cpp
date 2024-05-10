@@ -55,7 +55,6 @@ int main()
         while(riddles()==false)
         {
         cout<<"\n\nYou answed the door riddle wrong, Try again.\n\n";
-        riddles();
         }
                 cout<<"\n\nThe door opened, and there Elara found The Duke he is a merchant";
             do
