@@ -45,8 +45,7 @@ int main()
             }
     }
     int choice_1;
-    cout<<"\n\n Avaloria, a mystical realm filled with magic and ancient curses, lived a young witch named Elara.\n\n She came from a lineage of powerful witches who had ruled over Avaloria for centuries, using their magic to control the land.\n\n However, their quest for power led them to place a curse on Avaloria, causing suffering to its people.\n\n Feeling torn between loyalty to her family and a desire to undo their wrongs, Elara embarked on a quest to break the curse.\n\n With courage and determination, she journeyed through Avaloria, encountering allies and adversaries, all while seeking redemption for her\n\n family's past actions.\n\n"<<endl;
-    cout<<"Elara, tired of her family's curse on Avaloria, ran away from home to try and make things right.\n\nWhile wandering through a thick forest, she saw a strange light shining through the trees."<<endl;
+    cout<<"In the mystical realm of Avaloria, lived a young witch named Elara,\n\nher family of witches set a curse on the land. As she flees her ancestral home trying to break the curse,\n\nas she was wandering in the forest elara encounters a strange light in the forest."<<endl;
     cout<<"\n\nChoose your own story. YOUR CHOICE MATTER \n\n1. Explore Forest (Elara ventures deeper into the woods.)\n\n2. Follow Light (Elara follows the mysterious light.)"<<endl;
     do
     {
@@ -68,7 +67,7 @@ int main()
     char inv;
     if (choice_1 == 1)
     {
-        cout<<"\n\nDriven by a desire for ancient wisdom, Elara stumbles upon ruins hidden within the forest.\n\nShe believes that exploring these ruins may lead her to forgotten spells or artifacts\n\ncapable of breaking Avaloria's curse.";
+        cout<<"\n\nElara stumbles upon ruins hidden within the forest.";
         cout <<"\n\nWhile exploring the ruins, Elara found a magical door that is secured by a riddle, beware the door only asks once\n\nif answered incorrectly you will not be able to continue this path.";
         cout<<"\n\nThe riddle says : ";
         if (riddles()==false)
@@ -494,3 +493,4 @@ char buy;
             }
         }
     }
+}
