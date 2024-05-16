@@ -56,7 +56,7 @@ int main()
         {
         cout<<"\n\nYou answed the door riddle wrong, Try again.\n\n";
         }
-                cout<<"\n\nThe door opened, and there Elara found The Duke he is a merchant";
+        cout<<"\n\nThe door opened, and there Elara found The Duke he is a merchant";
             do
             {
                 cout<<"\n\nDo you want to see what The Duke has to offer Y/N ";
@@ -243,123 +243,148 @@ void inventory()
 }
 bool riddles()
 {
-        int x;
+        char x;
         char c;
         c=true;
     srand (time(0));
-    int dice= rand()%5;
+    while (true)
+    {int dice= rand()%5;
     if (dice==0)
     {cout<<"I speak without a mouth and hear without ears. I have no body, but I come alive with the wind.\n"
-    <<"1. echo"<<setw(12)<<"2. wind"<<setw(13)<<"3. sound"<<setw(14)<<"4. voice" "\n";
+    <<"a. echo"<<setw(12)<<"b. wind"<<setw(13)<<"c. sound"<<setw(14)<<"d. voice" "\n";
     cout<<"Enter choice ";
     cin>>x;
-    while (x>4)
-    {
-        cout<<"invalid input\nreenter choice ";
-        cin>>x;
-    }
-    if (x==1){
-    cout<<"\nCorrect"<<endl;
+    
+    if (x=='a' || x=='A'){
+    cout<<"\n\nCorrect\n\n"<<endl;
     cout<<"you earned 100 coins"<<endl;
     coins=coins+100;
+    c=true;
+    break;
     }
 
-    else
+    else if (x=='b'||x=='B'||x=='C'||x=='c'||x=='d'||x=='D')
     {
-    cout<<"\nWrong";
+    cout<<"\n\nWrong\n\n";
     c=false;
+    continue;
+    }
+    else 
+    {
+        cout<<"\n\ninvalid input another riddle will be given\n\n";
+        c=false;
+        continue;
     }
     }
     else if (dice==1)
     {
         cout<<"What has keys but can't open locks?\n"<<
-        "1. typewriter"<<setw(16)<<"2. keyboard"<<setw(13)<< "3. piano"<<setw(19)<<" 4. calculator\n";
+        "a. typewriter"<<setw(16)<<"b. keyboard"<<setw(13)<< "c. piano"<<setw(19)<<" d. calculator\n";
         cout<<"\nEnter choice ";
         cin>>x;
-        while (x>4)
-    {
-        cout<<"\n\nInvalid input\nReenter choice";
-        cin>>x;
-    }
-        if (x==3){
+      
+        if (x=='c' || x=='C'){
         cout<<"\n\nCorrect\n\n";
         cout<<"You earned 100 coins\n\n";
         coins=coins+100;
-        cout<<"You now have "<<coins<<" coins\n\n";}
-        else
+        c=true;
+        cout<<"You now have "<<coins<<" coins\n\n";
+        break;
+        }
+        else if (x=='b'||x=='B'||x=='a'||x=='A'||x=='d'||x=='D')
         {
-        cout<<"\n\nWrong";
+        cout<<"\n\nWrong\n\n";
         c=false;
         }
+      else
+    {
+        cout<<"\n\nInvalid input another riddle will be given\n\n";
+        c=false;
+        continue;
+    }
     }
     else if (dice==2)
     {
         
         cout<<"The more you take, the more you leave behind. What am I?\n"
-        <<"1. time"<<setw(17)<<"2. footsteps"<<setw(13)<<"3. aging"<<setw(16)<<"4. memories\n";
+        <<"a. time"<<setw(17)<<"b. footsteps"<<setw(13)<<"c. aging"<<setw(16)<<"d. memories\n";
         cout<<"\nEnter choice ";
         cin>>x;
-        while (x>4)
-    {
-        cout<<"invalid input\nReenter choice ";
-        cin>>x;
-    }
-        if (x==2){
+        
+        if (x=='b' || x=='B'){
         cout<<"\n\nCorrect\n\n";
         cout<<"You earned 100 coins\n\n";
         coins=coins+100;
-        cout<<"You now have "<<coins<<" coins\n\n";}
-        else
+        c=true;
+        cout<<"You now have "<<coins<<" coins\n\n";
+        break;
+        }
+        else if (x=='a'||x=='A'||x=='C'||x=='c'||x=='d'||x=='D')
         {
-        cout<<"\n\nWrong";
+        cout<<"\n\nWrong\n\n";
         c=false;
         }
+    else
+    {
+        cout<<"\n\nInvalid input another riddle will be given\n\n";
+        c=false;
+        continue;
+    }
     }
     else if(dice==3)
     {
         cout<<"What can travel around the world while staying in a corner?\n"<<
-    "1. stamp"<<setw(15)<<"2. a globe"<<setw(17)<<"3. a thought"<<setw(19)<<"4. information\n";
+    "a. stamp"<<setw(15)<<"b. a globe"<<setw(17)<<"c. a thought"<<setw(19)<<"d. information\n";
         cout<<"\n\nEnter choice";
         cin>>x;
-        while (x>4)
-    {
-        cout<<"\n\nInvalid input\nReenter choice ";
-        cin>>x;
-    }
-        if (x==1){
-        cout<<"\nCorrect\n\n";
+       
+        if (x=='a'|| x=='A'){
+        cout<<"\n\nCorrect\n\n";
         cout<<"You earned 100 coins\n\n";
         coins=coins+100;
-        cout<<"You now have "<<coins<<" coins\n\n";}
-        else
+        c=true;
+        cout<<"You now have "<<coins<<" coins\n\n";
+        break;
+        }
+        else if(x=='b'||x=='B'||x=='C'||x=='c'||x=='d'||x=='D')
         {
-        cout<<"\nWrong";
+        cout<<"\n\nWrong\n\n";
         c=false;   
         }
-        
+     else
+    {
+        cout<<"\n\nInvalid input another riddle will be given\n\n";
+        c=false;
+        continue;
+    }    
     }
     else if (dice==4)
     {
         cout<<"The more you have of it, the less you see. What is it?\n"<<
-        "1. blindness"<<setw(17)<<"2. ignorance"<<setw(16)<<"3. darkness"<<setw(16)<<"4. illusion\n";
+        "a. blindness"<<setw(17)<<"b. ignorance"<<setw(16)<<"c. darkness"<<setw(16)<<"d. illusion\n";
         cout<<"\nEnter choice ";
         cin>>x;
-        while (x>4)
-    {
-        cout<<"\nInvalid input\nreenter choice";
-        cin>>x;
-    }
-        if (x==3){
-        cout<<"\nCorrect\n\n";
+        
+        if (x=='c' || x=='C'){
+        cout<<"\n\nCorrect\n\n";
         cout<<"You earned 100 coins\n\n";
         coins=coins+100;
-        cout<<"You now have "<<coins<<" coins\n\n";}
-        else
+        c=true;
+        cout<<"You now have "<<coins<<" coins\n\n";
+        break;
+        }
+        else if(x=='b'||x=='B'||x=='a'||x=='A'||x=='d'||x=='D')
         {
-        cout<<"\nWrong";
+        cout<<"\n\nWrong\n\n";
         c=false;
         }
-
+        else
+    {
+        cout<<"\n\nInvalid input another riddle will be given\n\n";
+        c=false;
+        continue;
+    }
+    }
     }
 return c;
 }
