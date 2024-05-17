@@ -7,13 +7,14 @@ void inventory ();
 bool riddles();
 void shop (int & );
 void minions(int & , int & , int & , int &);
-void rpc();
+bool rpc();
 int healingPotionCount=2;
 int bombCount=1;
 int megaBombCount=0;
 int coins=100;
 int player_hp = 100;
 int player_damage = 15;
+int chapter = 1;
 
 int main() 
 {
@@ -45,7 +46,6 @@ int main()
                 continue;
             }
     }
-    int choice_1;
     cout<<"In the mystical realm of Avaloria, lived a young witch named Elara,\n\nher family of witches set a curse on the land. As she flees her ancestral home trying to break the curse,\n\nas she was wandering in the forest elara encounters a strange light in the forest."<<endl;
     char shop_yn;
     char inv;
@@ -91,7 +91,12 @@ int main()
             cout<<"\n\nYou Killed the 2nd minion\n\n";
             minions(healingPotionCount , player_hp , bombCount , megaBombCount);
             cout<<"\n\nYou Killed the 3rd minion\n\n";
-
+            cout<<"The Wizards joined Elara on her journey\n\n"<<endl;
+            cout<<"They Found a hidden a portal that challenged them to a Rock Paper Scissors game\n\n";
+            while(rpc()==false)
+            {
+            cout<<"\nTry Again\n\n ";
+            }
 
 return 0;
 }
@@ -135,6 +140,11 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                 heal_fight=toupper(heal_fight);
                 if (heal_fight == 'H')
                     {   
+                        if (healingPotionCount == 0)
+                        {
+                            cout<<"\nYou dont have enough Heal potions";
+                            continue;
+                        }
                         if (player_hp>0 & player_hp<100)
                             {
                                 if (player_hp>80)
@@ -227,12 +237,20 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
 void inventory()
 {
     char choice;
-    while(true)
-    {
-    cout<<setw(7)<<"Heal Potions"<<setw(13)<<"Bombs"<<setw(20)<<"Mega Bombs\n\n";
-    cout<<setw(6)<<healingPotionCount<<setw(17)<<bombCount<<setw(15)<<megaBombCount<<endl;
-    cout<<setw(7)<<"____________"<<setw(13)<<"_____"<<setw(18)<<"__________"<<endl;
-    cout<<"Press E to exit inverntory ";
+    while (true)
+    {char inventory[32]="Heal Potions\t\tBombs\t\tMega Bombs";
+    char line[33]="_____________\t\t_____\t\t__________";
+    for (int i=0;i<32;i++)
+    {cout<<inventory[i];
+    
+    }
+    cout<<"\n\n";
+    cout<<setw(7)<<healingPotionCount<<setw(20)<<bombCount<<setw(18)<<megaBombCount<<endl;
+    for (int i=0;i<32;i++)
+    {cout<<line[i];
+    
+    }
+    cout<<"\nPress E to exit inverntory ";
     cin>>choice;
     choice=toupper(choice);
     if (choice=='E')
@@ -495,45 +513,68 @@ char buy;
     }
 }
 
-void rpc(){
+bool rpc(){
     char Player_Choice;
     char Comp_Choice;
     int Comp_num;
     int i=1;
     int points_1=0,points_2=0;
+    bool w_l;
 
-    while (i<=3){
-        cout<<"Enter your choice (R for rock, P for paper, S for scissors, E to exit)";
+    while (i<=3)
+    {
+        do
+        {
+        cout<<"\nEnter your choice (R for rock, P for paper, S for scissors, E to exit)";
         cin>>Player_Choice;
         Player_Choice=toupper(Player_Choice);
-        if (Player_Choice == 'E'||Player_Choice == 'e'){
-            break;
+        if (Player_Choice!='R' && Player_Choice!='S' && Player_Choice!='P')
+        {
+            cout<<"\nInvalid Choice, Please enter again.\n";
         }
-        Comp_num = rand() % 3;
-        if (Comp_num == 0)
+        } while (Player_Choice!='R' && Player_Choice!='S' && Player_Choice!='P');
+
+        Comp_num =1 + rand() % 3;
+        if (Comp_num == 1)
             Comp_Choice = 'R';
-        else if (Comp_num == 1)
+        else if (Comp_num == 2)
             Comp_Choice = 'P';
-        else
+        else if (Comp_num == 3)
             Comp_Choice = 'S';
-        cout<<"Computer chooses:"<<Comp_Choice<<endl;
+        else 
+          cout<<"\nInvalid choice:";
+        cout<<"\nComputer chooses:"<<Comp_Choice<<endl;
         if (Player_Choice == Comp_Choice){
-            cout<<"It's a tie"<<endl;
-            cout<<"Point for each"<<endl;
+            cout<<"\nIt's a tie"<<endl;
+            cout<<"\nNo points"<<endl;
+        
         }
         else if((Player_Choice == 'R' && Comp_Choice == 'S') || (Player_Choice == 'P' && Comp_Choice == 'R')||(Player_Choice == 'S' && Comp_Choice == 'P')){
-            points_1=points_1+1;
-            cout<<"You won a point"<<endl;
+            points_1++;
+            cout<<"\nYou won a point"<<endl;
         }
             
         else{
-            points_2=points_2+1;
-            cout<<"Computer wins a point"<<endl;
+            points_2++;
+            cout<<"\nComputer wins a point"<<endl;
         }
-        i=i+1;
+        i++;
      }
+     cout<<points_1<<"\t"<<points_2<<endl;
      if (points_1>points_2)
-        cout<<"You win the game!"<<endl;
-     else
-      cout<<"You lost the game!"<<endl;
+        {
+        cout<<"\nYou win the game!"<<endl;
+        w_l=true;
+        }
+        else if (points_1==points_2)
+        {
+        cout<<"\nTie , The Game Ended ";
+        w_l=false;
+        }
+        else if(points_2>points_1)
+        {
+        cout<<"\nComputer Won The Game";
+        w_l=false;
+        }
+return w_l;
 }
