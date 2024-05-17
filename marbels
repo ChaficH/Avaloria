@@ -1,6 +1,44 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
-int main()
-{
-	
+
+bool guess_user(char comp_choice, char user_choice, int comp_guess, int user_guess) {
+    // Determine if guesses match
+    bool comp_correct = ((comp_choice == 'E' && user_guess % 2 == 0) || (comp_choice == 'O' && user_guess % 2 != 0));
+    bool user_correct = ((user_choice == 'E' && comp_guess % 2 == 0) || (user_choice == 'O' && comp_guess % 2 != 0));
+    return comp_correct && user_correct;
+}
+
+int main() {
+    srand(time(0)); 
+
+    cout << "Marble game is a game where each player starts with ten marbles. Players form pairs, and the objective is to win all ten marbles from their opponent. Players should be guessing the number of marbles in the hand of their opponent. The player who successfully acquires all ten marbles from their partner wins, while the loser faces elimination." << endl;
+
+    for(int i = 0; i < 10; i++) {
+        int comp_guess = 1 + rand() % 10;
+        int user_guess;
+  
+        char comp_choice = (rand() % 2 == 0) ? 'E' : 'O';
+
+        cout << "The computer has made its guess (E for even, O for odd)." << endl;
+
+        char user_choice;
+        cout << "User, enter your choice (E for even, O for odd): ";
+        cin >> user_choice;
+
+        cout << "Enter your guess (1-10): ";
+        cin >> user_guess;
+
+        cout << "The computer's choice was: " << comp_choice << endl;
+
+        bool result = guess_user(comp_choice, user_choice, comp_guess, user_guess);
+        if (result) {
+            cout << "Both guesses were correct!" << endl;
+        } else {
+            cout << "One or both guesses were incorrect." << endl;
+        }
+    }
+
+    return 0;
 }
