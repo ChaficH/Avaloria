@@ -7,6 +7,7 @@ void inventory ();
 bool riddles();
 void shop (int & );
 void minions(int & , int & , int & , int &);
+void super_guardians(int &  , int &  , int &  , int & );
 bool rpc();
 int healingPotionCount=2;
 int bombCount=1;
@@ -15,6 +16,7 @@ int coins=100;
 int player_hp = 100;
 int player_damage = 15;
 int chapter = 1;
+int lvl = 1;
 
 int main() 
 {
@@ -29,15 +31,16 @@ int main()
     cout<<"   ███    █▀   ▀██████▀    ███    █▀  █████▄▄██  ▀██████▀    ███    ███ █▀     ███    █▀  "<<endl;
     cout<<"                                      ▀                      ███    ███                   "<<endl;
     srand (time(0));
-    int en_ex;
+    char en_ex;
     while (true)
     {
         cout<<"\n\n"<<endl;
-        cout<<" \t\t        1. ┌─┐┬  ┌─┐┬ ┬            2. ╔═╗ ─┐ ┬ ┬┌┬┐"<<endl;
+        cout<<" \t\t        P. ┌─┐┬  ┌─┐┬ ┬            E. ╔═╗ ─┐ ┬ ┬┌┬┐"<<endl;
         cout<<" \t\t           ├─┘│  ├─┤└┬┘               ║╣  ┌┴┬┘ │ │ "<<endl;
         cout<<" \t\t           ┴  ┴─┘┴ ┴ ┴                ╚═╝ ┴ └─ ┴ ┴ "<<endl;
         cin>>en_ex;
-        if (en_ex == 1)
+        en_ex=toupper(en_ex);
+        if (en_ex == 'P')
             {
                 break;
             }
@@ -91,14 +94,64 @@ int main()
             cout<<"\n\nYou Killed the 2nd minion\n\n";
             minions(healingPotionCount , player_hp , bombCount , megaBombCount);
             cout<<"\n\nYou Killed the 3rd minion\n\n";
-            cout<<"The Wizards joined Elara on her journey\n\n"<<endl;
+            cout<<"\n\nYou got 100 coins\n\n";
+            coins+=100;
+            cout<<"\nYou have "<<coins<<" coins\n\n";
+            cout<<"\n\nPlayer Level UP , level ";
+            lvl++;
+            cout<<lvl;
+            cout<<"\n\nPlayer Damage increaced from "<<player_damage<<" to ";
+            
+            player_damage+=10;
+            cout<<player_damage;
+            cout<<"\n\nPlayer's max HP increased from 100 to 110";
+            cout<<"\n\nThe Wizards joined Elara on her journey\n\n"<<endl;
+            do
+            {
+                cout<<"\nThe Duke offered to enter the shop Y/N";
+                cin>>shop_yn;
+                shop_yn=toupper(shop_yn);
+                if (shop_yn != 'Y' && shop_yn != 'N')
+                {
+                    cout<<"\n\nInvalid choice";
+                }
+            } while (shop_yn!='Y'&&shop_yn!='N');
+
+            if (shop_yn == 'Y')
+            {
+                shop(coins);
+                cout<<"\n\nYou have "<<coins<<" coins left";
+                cout<<"\n\nPress E to enter inventory or any other button to continue ";
+                cin>>inv;
+                inv=toupper(inv);
+                if (inv == 'E')
+                {
+                    inventory();
+                }
+            }
             cout<<"They Found a hidden a portal that challenged them to a Rock Paper Scissors game\n\n";
             while(rpc()==false)
             {
             cout<<"\nTry Again\n\n ";
             }
-
-return 0;
+            cout<<"The portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
+            super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
+            cout<<"\n\nYou Killed the 1st Super Guardian\n\n";
+            super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
+            cout<<"\n\nYou Killed the 2nd Super Guardian\n\n";
+            cout<<"\n\nYou got 100 coins\n\n";
+            coins+=100;
+            cout<<"\nYou have "<<coins<<" coins\n\n";
+            cout<<"\n\nPlayer Level UP , level ";
+            lvl++;
+            cout<<lvl;
+            cout<<"\n\nPlayer Damage increaced from "<<player_damage<<" to ";
+            
+            player_damage+=10;
+            cout<<player_damage;
+            cout<<"\n\nPlayer's max HP increased from 110 to 120";
+            cout<<"\n\n\t\t****CHAPTER 2 : Family Feud*****";
+    return 0;
 }
 
 void minions(int & healingPotionCount , int & player_hp , int & bombCount , int & megaBombCount)
@@ -107,7 +160,7 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
         int enemy_damage = 35;
         int enemy_hp = 30;
         int max_hp;
-        cout<<"HP "<<player_hp<<"\n"<<endl;
+        cout<<"Player HP "<<player_hp<<"\n"<<endl;
         cout<<"Minon HP "<<enemy_hp<<"\n"<<endl;
         char heal_fight;
         while (true)
@@ -233,6 +286,140 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                 }
             }
 }
+
+void super_guardians(int & healingPotionCount , int & player_hp , int & bombCount , int & megaBombCount)
+{
+        
+        int enemy_damage = 45;
+        int enemy_hp = 90;
+        int max_hp;
+        cout<<"Player HP "<<player_hp<<"\n"<<endl;
+        cout<<"Super Guardian HP "<<enemy_hp<<"\n"<<endl;
+        char heal_fight;
+        while (true)
+            {   
+                if (enemy_hp <=0)
+                {
+                    break;
+                }
+                if (player_hp<=0)
+                    {
+                        cout<<"You Died Try Again !\n"<<endl;
+                        player_hp=110;
+                        enemy_hp=30;
+                        if (healingPotionCount == 0)
+                        {
+                            healingPotionCount+=1;
+                            cout<<"You got 1 Healing potion";
+                        }
+                        if (bombCount == 0)
+                        {
+                            bombCount+=1;
+                            cout<<"You got 1 Bomb";
+                        }
+
+                        continue;
+                    }
+                cout<<"\n\nYou Have "<<healingPotionCount<<" Heal potions, "<<bombCount<<" Bombs, "<<megaBombCount<<" Mega Bombs" ;
+                cout<<"\n\nPress H to Heal, F to Fight, B to throw a Bomb, and M to throw a Mega Bomb ";
+                cin>>heal_fight;
+                heal_fight=toupper(heal_fight);
+                if (heal_fight == 'H')
+                    {   
+                        if (healingPotionCount == 0)
+                        {
+                            cout<<"\nYou dont have enough Heal potions";
+                            continue;
+                        }
+                        if (player_hp>0 & player_hp<110)
+                            {
+                                if (player_hp>80)
+                                    {
+                                        max_hp=110-player_hp;
+                                        player_hp+=max_hp;
+                                        cout<<"\nYour HP is now "<<player_hp<<endl;
+                                        healingPotionCount -=1;
+                                        cout<<"\nYou still have "<< healingPotionCount<<" heal potions"<<endl;
+                                    }
+                                else
+                                    {   
+                                        player_hp+=20;
+                                        healingPotionCount -=1;
+                                        cout<<"\nYour HP is now "<<player_hp<<endl;
+                                        cout<<"\nYou still have "<< healingPotionCount<<" heal potions"<<endl;
+                                    }
+                            }
+                        if (player_hp>=110)
+                            {
+                                cout<<"\nYour health is full "<<player_hp<<endl;
+                            }
+                    }
+                if (heal_fight == 'F')
+                    {
+                        if (enemy_hp<=0 || player_hp<=0 )
+                                continue;
+                        else
+                            {
+                                enemy_hp=enemy_hp-player_damage;
+                                if (enemy_hp<=0)
+                                continue;
+                                cout<<"\nSuper Guardian HP is now "<<enemy_hp<<endl;
+                                player_hp=player_hp-enemy_damage;
+                                if (player_hp<=0 )
+                                continue;
+                                cout<<"\nYour HP is now "<<player_hp<<endl;
+                                continue;
+                            }
+                    }
+                if (heal_fight == 'B')
+                {
+                    if(bombCount == 0)
+                    {
+                        cout<<"\n\nYou dont have enough bombs\n\n ";
+                        continue;
+                    }
+                    bombCount-=1;
+                    if (enemy_hp<=0 || player_hp<=0 )
+                        continue;
+                    else
+                        {
+                            enemy_hp=enemy_hp-40;
+                            if (enemy_hp<=0)
+                            continue;
+                            cout<<"\nSuper Guardian HP is now "<<enemy_hp<<endl;
+                            player_hp=player_hp-enemy_damage;
+                            if (player_hp<=0 )
+                            continue;
+                            cout<<"\nYour HP is now "<<player_hp<<endl;
+                            continue;
+                        }
+                }
+                if (heal_fight == 'M')
+                {
+                    if(megaBombCount == 0)
+                    {
+                        cout<<"\n\nYou dont have enough Mega bombs\n\n ";
+                        continue;
+                    }
+                    megaBombCount-=1;
+                                if (enemy_hp<=0 || player_hp<=0 )
+                                continue;
+                        else
+                            {
+                                enemy_hp=enemy_hp-enemy_hp;
+                                if (enemy_hp<=0)
+                                continue;
+                                cout<<"\nSuper Guardian HP is now "<<enemy_hp<<endl;
+                                player_hp=player_hp-enemy_damage;
+                                if (player_hp<=0 )
+                                continue;
+                                cout<<"\nYour HP is now "<<player_hp<<endl;
+                                continue;
+                            }
+                }
+            }
+}
+
 
 void inventory()
 {
@@ -560,7 +747,6 @@ bool rpc(){
         }
         i++;
      }
-     cout<<points_1<<"\t"<<points_2<<endl;
      if (points_1>points_2)
         {
         cout<<"\nYou win the game!"<<endl;
