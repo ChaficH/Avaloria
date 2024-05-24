@@ -17,7 +17,6 @@ int megaBombCount=0;
 int coins=100;
 int player_hp = 100;
 int player_damage = 15;
-int chapter = 1;
 int lvl = 1;
 
 int main() 
