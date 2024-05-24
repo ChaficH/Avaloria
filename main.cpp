@@ -9,6 +9,7 @@ void shop (int & );
 void minions(int & , int & , int & , int &);
 void super_guardians(int &  , int &  , int &  , int & );
 bool rpc();
+bool marbles();
 int healingPotionCount=2;
 int bombCount=1;
 int megaBombCount=0;
@@ -151,6 +152,15 @@ int main()
             cout<<player_damage;
             cout<<"\n\nPlayer's max HP increased from 110 to 120";
             cout<<"\n\n\t\t****CHAPTER 2 : Family Feud*****";
+            cout<<"\n\nNow that the guardians are dead they immited an aurora and killed off all our allies now. Elara is on her own.\n\n";
+            cout<<"A rogue wanderer appeared and lead Elara to another temple where she can get a spell and remove the curse from Avaloria\n\n";
+            cout<<"A portal apeared and challenged Elara to a marbles game ";
+            while(marbles()==false)
+            {
+            cout<<"\nTry Again\n\n ";
+            }
+            
+
     return 0;
 }
 
@@ -763,4 +773,77 @@ bool rpc(){
         w_l=false;
         }
 return w_l;
+}
+
+bool marbles(){
+  int PlayerMarbles =10;
+  int CompMarbles = 10;
+  int Turn = 0;
+  bool w_l;
+ while(PlayerMarbles>0 && CompMarbles>0)
+ {
+
+
+  int PlayerMarblesInHand;
+  int CompMarblesInHand=rand()%CompMarbles+1;
+  do{
+   
+  cout<< "Enter the number of marbles you have in hand: ";
+  cin >> PlayerMarblesInHand;
+   
+  }while(PlayerMarblesInHand>PlayerMarbles);
+  
+  int ComputerPick = rand()%2;
+
+  if(Turn==1)
+  {
+    if(ComputerPick == PlayerMarblesInHand%2)
+    {
+      CompMarbles+=PlayerMarblesInHand;
+      PlayerMarbles-=PlayerMarblesInHand;
+      cout<<"Computer guessed right You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+    }
+    else
+    {
+      CompMarbles-=CompMarblesInHand;
+      PlayerMarbles+= CompMarblesInHand;
+      cout<<"Computer guessed wrong You gain "<<CompMarblesInHand<<" Marbles.\n";
+     }
+     Turn=0;  
+  }else
+  {
+    int guess;
+    do{
+      cout<<"Enter your guess:\n0:Even\n1:Odd\nAnswer: ";
+      cin>>guess;
+      
+    }
+    while(guess!=0 && guess!=1);
+    
+    if(guess == CompMarblesInHand%2)
+    {
+      CompMarbles-=CompMarblesInHand;
+      PlayerMarbles+=CompMarblesInHand;
+      cout<<"You guessed right You gain "<<CompMarblesInHand<<" Marbles.\n";
+    }
+    else
+    {
+      CompMarbles+=PlayerMarblesInHand;
+      PlayerMarbles-= PlayerMarblesInHand;
+      cout<<"You guessed wrong You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+     }
+     Turn=1;
+  }  
+ }
+ 
+ if(PlayerMarbles==0)
+ {
+   cout<<"You Lose!";
+   w_l=false;
+ }
+ else{
+   cout<<"You Win!";
+   w_l=true;
+ }
+ return w_l;
 }
