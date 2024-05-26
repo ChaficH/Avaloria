@@ -1,0 +1,87 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+bool marbles(){
+  int PlayerMarbles =10;
+  int CompMarbles = 10;
+  int Turn = 0;
+  bool w_l;
+ while(PlayerMarbles>0 && CompMarbles>0)
+ {
+
+
+  int PlayerMarblesInHand;
+  int CompMarblesInHand=rand()%CompMarbles+1;
+  do{
+   
+  cout<< "Enter the number of marbles you have in hand: ";
+  cin >> PlayerMarblesInHand;
+   
+  }while(PlayerMarblesInHand>PlayerMarbles);
+  
+  int ComputerPick = rand()%2;
+
+  if(Turn==1)
+  {
+    if(ComputerPick == PlayerMarblesInHand%2)
+    {
+      CompMarbles+=PlayerMarblesInHand;
+      PlayerMarbles-=PlayerMarblesInHand;
+      cout<<"Computer guessed right You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+      cout<<"Computer picked "<<ComputerPick<<endl;
+    }
+    else
+    {
+      CompMarbles-=CompMarblesInHand;
+      PlayerMarbles+= CompMarblesInHand;
+      cout<<"Computer guessed wrong You gain "<<CompMarblesInHand<<" Marbles.\n";
+      cout<<"Computer guess was "<<ComputerPick<<endl;
+     }
+     Turn=0;  
+  }else
+  {
+    int guess;
+    do{
+      cout<<"Enter your guess:\n0:Even\n1:Odd\nAnswer: ";
+      cin>>guess;
+      
+    }
+    while(guess!=0 && guess!=1);
+    
+    if(guess == CompMarblesInHand%2)
+    {
+      CompMarbles-=CompMarblesInHand;
+      PlayerMarbles+=CompMarblesInHand;
+      cout<<"You guessed right You gain "<<CompMarblesInHand<<" Marbles.\n";
+      cout<<"Computer had "<<CompMarblesInHand<<" marbles in hand"<<endl;
+    }
+    else
+    {
+      CompMarbles+=PlayerMarblesInHand;
+      PlayerMarbles-= PlayerMarblesInHand;
+      cout<<"You guessed wrong You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+      cout<<"Computer had "<<CompMarblesInHand<<" marbles in hand"<<endl;
+     }
+     Turn=1;
+  }  
+ }
+ 
+ if(PlayerMarbles==0)
+ {
+   cout<<"You Lose!";
+   w_l=false;
+ }
+ else{
+   cout<<"You Win!";
+   w_l=true;
+ }
+ return w_l;
+}
+ int main()
+ {
+    srand(time(0));
+    marbles();
+    return 0;
+ }
