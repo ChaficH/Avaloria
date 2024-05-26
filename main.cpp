@@ -130,12 +130,12 @@ int main()
                     inventory();
                 }
             }
-            cout<<"They Found a hidden a portal that challenged them to a Rock Paper Scissors game\n\n";
+            cout<<"\n\nThey Found a hidden portal that challenged them to a Rock Paper Scissors game\n\n";
             while(rpc()==false)
             {
             cout<<"\nTry Again\n\n ";
             }
-            cout<<"The portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
+            cout<<"\n\nThe portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
             super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
             cout<<"\n\nYou Killed the 1st Super Guardian\n\n";
             super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
