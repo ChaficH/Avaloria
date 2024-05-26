@@ -942,6 +942,7 @@ bool rpc(){
 return w_l;
 }
 
+
 bool marbles(){
   int PlayerMarbles =10;
   int CompMarbles = 10;
@@ -959,7 +960,7 @@ bool marbles(){
   cin >> PlayerMarblesInHand;
    
   }while(PlayerMarblesInHand>PlayerMarbles);
-  
+ 
   int ComputerPick = rand()%2;
 
   if(Turn==1)
@@ -969,12 +970,14 @@ bool marbles(){
       CompMarbles+=PlayerMarblesInHand;
       PlayerMarbles-=PlayerMarblesInHand;
       cout<<"Computer guessed right You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+      cout<<"Computer picked "<<ComputerPick<<endl;
     }
     else
     {
       CompMarbles-=CompMarblesInHand;
       PlayerMarbles+= CompMarblesInHand;
       cout<<"Computer guessed wrong You gain "<<CompMarblesInHand<<" Marbles.\n";
+      cout<<"Computer guess was "<<ComputerPick<<endl;
      }
      Turn=0;  
   }else
@@ -983,21 +986,23 @@ bool marbles(){
     do{
       cout<<"Enter your guess:\n0:Even\n1:Odd\nAnswer: ";
       cin>>guess;
-      
+     
     }
     while(guess!=0 && guess!=1);
-    
+   
     if(guess == CompMarblesInHand%2)
     {
       CompMarbles-=CompMarblesInHand;
       PlayerMarbles+=CompMarblesInHand;
       cout<<"You guessed right You gain "<<CompMarblesInHand<<" Marbles.\n";
+      cout<<"Computer had "<<CompMarblesInHand<<" marbles in hand"<<endl;
     }
     else
     {
       CompMarbles+=PlayerMarblesInHand;
       PlayerMarbles-= PlayerMarblesInHand;
       cout<<"You guessed wrong You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+      cout<<"Computer had "<<CompMarblesInHand<<" marbles in hand"<<endl;
      }
      Turn=1;
   }  
