@@ -130,12 +130,12 @@ int main()
                     inventory();
                 }
             }
-            cout<<"\n\nThey Found a hidden portal that challenged them to a Rock Paper Scissors game\n\n";
+            cout<<"They Found a hidden a portal that challenged them to a Rock Paper Scissors game\n\n";
             while(rpc()==false)
             {
             cout<<"\nTry Again\n\n ";
             }
-            cout<<"\n\nThe portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
+            cout<<"The portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
             super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
             cout<<"\n\nYou Killed the 1st Super Guardian\n\n";
             super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
@@ -889,7 +889,7 @@ bool rpc(){
     {
         do
         {
-        cout<<"\nEnter your choice (R for rock, P for paper, S for scissors, E to exit)";
+        cout<<"\nEnter your choice (R for rock, P for paper, S for scissors.)";
         cin>>Player_Choice;
         Player_Choice=toupper(Player_Choice);
         if (Player_Choice!='R' && Player_Choice!='S' && Player_Choice!='P')
