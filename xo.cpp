@@ -95,8 +95,6 @@ int main() {
         player = (player == 1) ? 2 : 1;
 
     } while (gameStatus == -1);
-
-    cin.ignore();
-    cin.get();
+    
     return 0;
 }
