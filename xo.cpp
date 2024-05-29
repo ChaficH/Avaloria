@@ -1,6 +1,7 @@
 #include <iostream>
-#include <cstdlib> // for rand() and srand()
-#include <ctime>   // for time()
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 char square[10] = {'0','1','2','3','4','5','6','7','8','9'};
@@ -12,7 +13,7 @@ int checkwin() {
             return 1; // Win condition across rows
     }
     for (int i = 1; i <= 3; ++i) {
-        if (square[i] == square[i + 3] && square[i + 3] == square[i + 6])
+        if (square[i] == square[i + 3] && square[i] == square[i + 6])
             return 1; // Win condition across columns
     }
     if (square[1] == square[5] && square[5] == square[9])
@@ -29,15 +30,15 @@ int checkwin() {
 
 // Function to draw the board
 void drawBoard() {
-    system("clear"); // Clearing the console (for Unix-like systems)
+    //system("clear"); // Clearing the console (for Unix-like systems)
     cout << "\n\n\t Tic Tac Toe Game \n\n";
     cout << "Player 1 (X) - Player 2 (O)" << endl << endl;
     cout << "     |     |     " << endl;
     cout << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << endl;
-    cout << "__|_|__" << endl;
+    cout << "_____|_____|_____" << endl;
     cout << "     |     |     " << endl;
     cout << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << endl;
-    cout << "__|_|__" << endl;
+    cout << "_____|_____|_____" << endl;
     cout << "     |     |     " << endl;
     cout << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << endl;
     cout << "     |     |     " << endl << endl;
@@ -49,29 +50,37 @@ int main() {
     int gameStatus; // Declaration of gameStatus variable
 
     // Seed for random number generation
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
 
     do {
         drawBoard();
+        
+        // (Player 1)
         if (player == 1) {
-            cout << "Player 1, enter your move (1-9): ";
-            cin >> choice;
-        } else {
-            // Player 2 is the computer, choose a random move
+            do {
+                cout << "Player 1, enter your move (1-9): ";
+                cin >> choice;
+                if (choice < 1 || choice > 9 || square[choice] == 'X' || square[choice] == 'O') {
+                    cout << "Invalid move. Please enter a valid number." << endl;
+                    choice = -1; // Reset choice to trigger the input loop again
+                }
+            } while (choice < 1 || choice > 9 || square[choice] == 'X' || square[choice] == 'O');
+        } 
+        // (Player 2)
+        else {
             choice = (rand() % 9) + 1;
+            while (square[choice] == 'X' || square[choice] == 'O') {
+                choice = (rand() % 9) + 1;
+            }
             cout << "Player 2 (Computer) chooses square " << choice << endl;
         }
 
         mark = (player == 1) ? 'X' : 'O';
+        square[choice] = mark;
 
-        if (choice >= 1 && choice <= 9 && square[choice] == '0' + choice) {
-            square[choice] = mark;
-        } else {
-            cout << "Invalid move. Try again." << endl;
-            continue;
-        }
-
-        gameStatus = checkwin(); // Assigning gameStatus value
+        gameStatus = checkwin(); // to assign gameStatus value
+        
+        // Display game status
         if (gameStatus == 1) {
             drawBoard();
             cout << "\aPlayer " << player << " wins!" << endl;
@@ -82,7 +91,9 @@ int main() {
             break;
         }
 
-        player = (player == 1) ? 2 : 1; // Switch players
+        // Switch players
+        player = (player == 1) ? 2 : 1;
+
     } while (gameStatus == -1);
 
     cin.ignore();
