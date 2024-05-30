@@ -50,7 +50,7 @@ int main()
                 continue;
             }
     }
-    cout<<"In the mystical realm of Avaloria, lived a young witch named Elara,\n\nher family of witches set a curse on the land. As she flees her ancestral home trying to break the curse,\n\nas she was wandering in the forest elara encounters a strange light in the forest."<<endl;
+    cout<<"\n\nIn the mystical realm of Avaloria, lived a young witch named Elara,\n\nher family of witches set a curse on the land. As she flees her ancestral home trying to break the curse,\n\nas she was wandering in the forest elara encounters a strange light in the forest."<<endl;
     char shop_yn;
     char inv;
         cout<<"\n\nElara stumbles upon ruins hidden within the forest.";
@@ -130,12 +130,12 @@ int main()
                     inventory();
                 }
             }
-            cout<<"They Found a hidden a portal that challenged them to a Rock Paper Scissors game\n\n";
+            cout<<"\nThey Found a hidden a portal that challenged them to a Rock Paper Scissors game\n\n";
             while(rpc()==false)
             {
             cout<<"\nTry Again\n\n ";
             }
-            cout<<"The portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
+            cout<<"\nThe portal opened, turnes out it was a trap setup by Elara's family of witches, 2 Super guardians appeared \n\n";
             super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
             cout<<"\n\nYou Killed the 1st Super Guardian\n\n";
             super_guardians(healingPotionCount , player_hp , bombCount , megaBombCount);
@@ -152,7 +152,7 @@ int main()
             cout<<"\n\nPlayer's max HP increased from 110 to 120";
             cout<<"\n\n\t\t****CHAPTER 2 : Family Feud*****";
             cout<<"\n\nNow that the guardians are dead they immited an aurora and killed off all our allies now. Elara is on her own.\n\n";
-            cout<<"A rogue wanderer appeared and lead Elara to another temple where she can get a spell and remove the curse from Avaloria\n\n";
+            cout<<"\nA rogue wanderer appeared and lead Elara to another temple where she can get a spell and remove the curse from Avaloria\n\n";
             do
             {
                 cout<<"\nThe Duke offered to enter the shop this is you last chance to enter Y/N";
@@ -334,7 +334,7 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
 void super_guardians(int & healingPotionCount , int & player_hp , int & bombCount , int & megaBombCount)
 {
         
-        int enemy_damage = 40;
+        int enemy_damage = 35;
         int enemy_hp = 90;
         int max_hp;
         cout<<"Player HP "<<player_hp<<"\n"<<endl;
@@ -349,17 +349,17 @@ void super_guardians(int & healingPotionCount , int & player_hp , int & bombCoun
                 if (player_hp<=0)
                     {
                         cout<<"You Died Try Again !\n"<<endl;
-                        player_hp=110;
-                        enemy_hp=30;
+                        player_hp=55;
+                        enemy_hp=90;
                         if (healingPotionCount == 0)
                         {
-                            healingPotionCount+=1;
-                            cout<<"You got 1 Healing potion";
+                            healingPotionCount+=2;
+                            cout<<"You got 2 Healing potion";
                         }
                         if (bombCount == 0)
                         {
-                            bombCount+=1;
-                            cout<<"You got 1 Bomb";
+                            bombCount+=2;
+                            cout<<"You got 2 Bomb";
                         }
 
                         continue;
@@ -467,7 +467,7 @@ void super_guardians(int & healingPotionCount , int & player_hp , int & bombCoun
 void mother_witch(int & healingPotionCount , int & player_hp , int & bombCount , int & megaBombCount)
 {
         
-        int enemy_damage = 50;
+        int enemy_damage = 45;
         int enemy_hp = 100;
         int max_hp;
         cout<<"Player HP "<<player_hp<<"\n"<<endl;
@@ -482,17 +482,17 @@ void mother_witch(int & healingPotionCount , int & player_hp , int & bombCount ,
                 if (player_hp<=0)
                     {
                         cout<<"You Died Try Again !\n"<<endl;
-                        player_hp=120;
+                        player_hp=60;
                         enemy_hp=100;
                         if (healingPotionCount == 0)
                         {
-                            healingPotionCount+=1;
-                            cout<<"You got 1 Healing potion";
+                            healingPotionCount+=3;
+                            cout<<"You got 3 Healing potions";
                         }
                         if (bombCount == 0)
                         {
-                            bombCount+=1;
-                            cout<<"You got 1 Bomb";
+                            bombCount+=3;
+                            cout<<"You got 3 Bombs";
                         }
 
                         continue;
@@ -614,7 +614,7 @@ void inventory()
     {cout<<line[i];
     
     }
-    cout<<"\nPress E to exit inverntory ";
+    cout<<"\n\nPress E to exit inverntory ";
     cin>>choice;
     choice=toupper(choice);
     if (choice=='E')
@@ -632,14 +632,14 @@ bool riddles()
     while (true)
     {int dice= rand()%5;
     if (dice==0)
-    {cout<<"I speak without a mouth and hear without ears. I have no body, but I come alive with the wind.\n"
-    <<"a. echo"<<setw(12)<<"b. wind"<<setw(13)<<"c. sound"<<setw(14)<<"d. voice" "\n";
+    {cout<<"\nI speak without a mouth and hear without ears. I have no body, but I come alive with the wind.\n"
+    <<"\na. echo"<<setw(12)<<"b. wind"<<setw(13)<<"c. sound"<<setw(14)<<"d. voice" "\n";
     cout<<"Enter choice ";
     cin>>x;
     
     if (x=='a' || x=='A'){
     cout<<"\n\nCorrect\n\n"<<endl;
-    cout<<"you earned 100 coins"<<endl;
+    cout<<"\nyou earned 100 coins"<<endl;
     coins=coins+100;
     c=true;
     break;
@@ -660,17 +660,17 @@ bool riddles()
     }
     else if (dice==1)
     {
-        cout<<"What has keys but can't open locks?\n"<<
-        "a. typewriter"<<setw(16)<<"b. keyboard"<<setw(13)<< "c. piano"<<setw(19)<<" d. calculator\n";
+        cout<<"\nWhat has keys but can't open locks?\n"<<
+        "\na. typewriter"<<setw(16)<<"b. keyboard"<<setw(13)<< "c. piano"<<setw(19)<<" d. calculator\n";
         cout<<"\nEnter choice ";
         cin>>x;
       
         if (x=='c' || x=='C'){
         cout<<"\n\nCorrect\n\n";
-        cout<<"You earned 100 coins\n\n";
+        cout<<"\nYou earned 100 coins\n\n";
         coins=coins+100;
         c=true;
-        cout<<"You now have "<<coins<<" coins\n\n";
+        cout<<"\nYou now have "<<coins<<" coins\n\n";
         break;
         }
         else if (x=='b'||x=='B'||x=='a'||x=='A'||x=='d'||x=='D')
@@ -688,17 +688,17 @@ bool riddles()
     else if (dice==2)
     {
         
-        cout<<"The more you take, the more you leave behind. What am I?\n"
-        <<"a. time"<<setw(17)<<"b. footsteps"<<setw(13)<<"c. aging"<<setw(16)<<"d. memories\n";
+        cout<<"\nThe more you take, the more you leave behind. What am I?\n"
+        <<"\na. time"<<setw(17)<<"b. footsteps"<<setw(13)<<"c. aging"<<setw(16)<<"d. memories\n";
         cout<<"\nEnter choice ";
         cin>>x;
         
         if (x=='b' || x=='B'){
         cout<<"\n\nCorrect\n\n";
-        cout<<"You earned 100 coins\n\n";
+        cout<<"\nYou earned 100 coins\n\n";
         coins=coins+100;
         c=true;
-        cout<<"You now have "<<coins<<" coins\n\n";
+        cout<<"\nYou now have "<<coins<<" coins\n\n";
         break;
         }
         else if (x=='a'||x=='A'||x=='C'||x=='c'||x=='d'||x=='D')
@@ -715,17 +715,16 @@ bool riddles()
     }
     else if(dice==3)
     {
-        cout<<"What can travel around the world while staying in a corner?\n"<<
-    "a. stamp"<<setw(15)<<"b. a globe"<<setw(17)<<"c. a thought"<<setw(19)<<"d. information\n";
-        cout<<"\n\nEnter choice";
+        cout<<"\nWhat can travel around the world while staying in a corner?\n"<<"\na. stamp"<<setw(15)<<"b. a globe"<<setw(17)<<"c. a thought"<<setw(19)<<"d. information\n";
+        cout<<"\n\nEnter choice ";
         cin>>x;
        
         if (x=='a'|| x=='A'){
         cout<<"\n\nCorrect\n\n";
-        cout<<"You earned 100 coins\n\n";
+        cout<<"\nYou earned 100 coins\n\n";
         coins=coins+100;
         c=true;
-        cout<<"You now have "<<coins<<" coins\n\n";
+        cout<<"\nYou now have "<<coins<<" coins\n\n";
         break;
         }
         else if(x=='b'||x=='B'||x=='C'||x=='c'||x=='d'||x=='D')
@@ -742,17 +741,17 @@ bool riddles()
     }
     else if (dice==4)
     {
-        cout<<"The more you have of it, the less you see. What is it?\n"<<
-        "a. blindness"<<setw(17)<<"b. ignorance"<<setw(16)<<"c. darkness"<<setw(16)<<"d. illusion\n";
+        cout<<"\nThe more you have of it, the less you see. What is it?\n"<<
+        "\na. blindness"<<setw(17)<<"b. ignorance"<<setw(16)<<"c. darkness"<<setw(16)<<"d. illusion\n";
         cout<<"\nEnter choice ";
         cin>>x;
         
         if (x=='c' || x=='C'){
         cout<<"\n\nCorrect\n\n";
-        cout<<"You earned 100 coins\n\n";
+        cout<<"\nYou earned 100 coins\n\n";
         coins=coins+100;
         c=true;
-        cout<<"You now have "<<coins<<" coins\n\n";
+        cout<<"\nYou now have "<<coins<<" coins\n\n";
         break;
         }
         else if(x=='b'||x=='B'||x=='a'||x=='A'||x=='d'||x=='D')
@@ -907,7 +906,7 @@ bool rpc(){
             Comp_Choice = 'S';
         else 
           cout<<"\nInvalid choice:";
-        cout<<"\nComputer chooses:"<<Comp_Choice<<endl;
+        cout<<"\n chooses:"<<Comp_Choice<<endl;
         if (Player_Choice == Comp_Choice){
             cout<<"\nIt's a tie"<<endl;
             cout<<"\nNo points"<<endl;
@@ -920,7 +919,7 @@ bool rpc(){
             
         else{
             points_2++;
-            cout<<"\nComputer wins a point"<<endl;
+            cout<<"\nPortal wins a point"<<endl;
         }
         i++;
      }
@@ -936,28 +935,38 @@ bool rpc(){
         }
         else if(points_2>points_1)
         {
-        cout<<"\nComputer Won The Game";
+        cout<<"\nPortal Won The Game";
         w_l=false;
         }
 return w_l;
 }
 
-
-bool marbles(){
-  int PlayerMarbles =10;
-  int CompMarbles = 10;
-  int Turn = 0;
-  bool w_l;
+bool marbles()
+{
+    int PlayerMarbles =10;
+    int CompMarbles = 10;
+    int Turn = 0;
+    char word;
+    bool w_l;
  while(PlayerMarbles>0 && CompMarbles>0)
  {
+    int PlayerMarblesInHand;
+    int CompMarblesInHand=rand()%CompMarbles+1;
+    cout<<"\nMarbles with Elara "<<PlayerMarbles<<endl;
+    cout<<"\nMarbles with the Portal "<<CompMarbles<<endl;
 
-
-  int PlayerMarblesInHand;
-  int CompMarblesInHand=rand()%CompMarbles+1;
   do{
    
-  cout<< "Enter the number of marbles you have in hand: ";
+  cout<< "\nEnter the number of marbles you have in hand: ";
   cin >> PlayerMarblesInHand;
+  if (PlayerMarblesInHand<=0)
+  {
+    while (PlayerMarblesInHand<=0)
+    {
+        cout<<"\nInvalid input\n\nEnter the number of marbles you have in hand: ";
+        cin>>PlayerMarblesInHand;
+    }
+  }
    
   }while(PlayerMarblesInHand>PlayerMarbles);
  
@@ -969,40 +978,47 @@ bool marbles(){
     {
       CompMarbles+=PlayerMarblesInHand;
       PlayerMarbles-=PlayerMarblesInHand;
-      cout<<"Computer guessed right You lose "<<PlayerMarblesInHand<<" Marbles.\n";
-      cout<<"Computer picked "<<ComputerPick<<endl;
+      cout<<"\nPortal guessed right You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+      
     }
     else
     {
       CompMarbles-=CompMarblesInHand;
       PlayerMarbles+= CompMarblesInHand;
-      cout<<"Computer guessed wrong You gain "<<CompMarblesInHand<<" Marbles.\n";
-      cout<<"Computer guess was "<<ComputerPick<<endl;
+      cout<<"\nPortal guessed wrong You gain "<<CompMarblesInHand<<" Marbles.\n";
+      
      }
      Turn=0;  
   }else
   {
     int guess;
     do{
-      cout<<"Enter your guess:\n0:Even\n1:Odd\nAnswer: ";
-      cin>>guess;
-     
+      cout<<"\nEnter your guess:\nE:Even\nO:Odd\nAnswer: ";
+      cin>>word;
+     word=toupper(word);
     }
-    while(guess!=0 && guess!=1);
-   
+    while(word!='E' && word!='O');
+   if (word=='E')
+   {
+    guess=0;
+   }
+   else
+   {
+    guess=1;
+   }
     if(guess == CompMarblesInHand%2)
     {
       CompMarbles-=CompMarblesInHand;
       PlayerMarbles+=CompMarblesInHand;
-      cout<<"You guessed right You gain "<<CompMarblesInHand<<" Marbles.\n";
-      cout<<"Computer had "<<CompMarblesInHand<<" marbles in hand"<<endl;
+      cout<<"\nYou guessed right You gain "<<CompMarblesInHand<<" Marbles.\n";
+      cout<<"\nPortal had "<<CompMarblesInHand<<" marbles in hand"<<endl;
     }
     else
     {
       CompMarbles+=PlayerMarblesInHand;
       PlayerMarbles-= PlayerMarblesInHand;
-      cout<<"You guessed wrong You lose "<<PlayerMarblesInHand<<" Marbles.\n";
-      cout<<"Computer had "<<CompMarblesInHand<<" marbles in hand"<<endl;
+      cout<<"\nYou guessed wrong You lose "<<PlayerMarblesInHand<<" Marbles.\n";
+      cout<<"\nPortal had "<<CompMarblesInHand<<" marbles in hand"<<endl;
      }
      Turn=1;
   }  
@@ -1010,11 +1026,11 @@ bool marbles(){
  
  if(PlayerMarbles==0)
  {
-   cout<<"You Lose!";
+   cout<<"\nYou Lose!";
    w_l=false;
  }
  else{
-   cout<<"You Win!";
+   cout<<"\nYou Win!";
    w_l=true;
  }
  return w_l;
