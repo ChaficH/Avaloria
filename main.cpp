@@ -204,8 +204,8 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
         int enemy_damage = 35;
         int enemy_hp = 30;
         int max_hp;
-        cout<<"Player HP "<<player_hp<<"\n"<<endl;
-        cout<<"Minon HP "<<enemy_hp<<"\n"<<endl;
+        cout<<"\nPlayer HP "<<player_hp<<"\n"<<endl;
+        cout<<"\nMinon HP "<<enemy_hp<<"\n"<<endl;
         char heal_fight;
         while (true)
             {   
@@ -215,18 +215,18 @@ void minions(int & healingPotionCount , int & player_hp , int & bombCount , int 
                 }
                 if (player_hp<=0)
                     {
-                        cout<<"You Died Try Again !\n"<<endl;
+                        cout<<"\nYou Died Try Again !\n"<<endl;
                         player_hp=100;
                         enemy_hp=30;
                         if (healingPotionCount == 0)
                         {
                             healingPotionCount+=1;
-                            cout<<"You got 1 Healing potion";
+                            cout<<"\nYou got 1 Healing potion";
                         }
                         if (bombCount == 0)
                         {
                             bombCount+=1;
-                            cout<<"You got 1 Bomb";
+                            cout<<"\nYou got 1 Bomb";
                         }
 
                         continue;
@@ -337,8 +337,8 @@ void super_guardians(int & healingPotionCount , int & player_hp , int & bombCoun
         int enemy_damage = 35;
         int enemy_hp = 90;
         int max_hp;
-        cout<<"Player HP "<<player_hp<<"\n"<<endl;
-        cout<<"Super Guardian HP "<<enemy_hp<<"\n"<<endl;
+        cout<<"\nPlayer HP "<<player_hp<<"\n"<<endl;
+        cout<<"\nSuper Guardian HP "<<enemy_hp<<"\n"<<endl;
         char heal_fight;
         while (true)
             {   
@@ -348,18 +348,18 @@ void super_guardians(int & healingPotionCount , int & player_hp , int & bombCoun
                 }
                 if (player_hp<=0)
                     {
-                        cout<<"You Died Try Again !\n"<<endl;
+                        cout<<"\nYou Died Try Again !\n"<<endl;
                         player_hp=55;
                         enemy_hp=90;
                         if (healingPotionCount == 0)
                         {
                             healingPotionCount+=2;
-                            cout<<"You got 2 Healing potion";
+                            cout<<"\nYou got 2 Healing potion";
                         }
                         if (bombCount == 0)
                         {
                             bombCount+=2;
-                            cout<<"You got 2 Bomb";
+                            cout<<"\nYou got 2 Bomb";
                         }
 
                         continue;
@@ -470,8 +470,8 @@ void mother_witch(int & healingPotionCount , int & player_hp , int & bombCount ,
         int enemy_damage = 45;
         int enemy_hp = 100;
         int max_hp;
-        cout<<"Player HP "<<player_hp<<"\n"<<endl;
-        cout<<"Witch HP "<<enemy_hp<<"\n"<<endl;
+        cout<<"\nPlayer HP "<<player_hp<<"\n"<<endl;
+        cout<<"\nWitch HP "<<enemy_hp<<"\n"<<endl;
         char heal_fight;
         while (true)
             {   
@@ -481,18 +481,18 @@ void mother_witch(int & healingPotionCount , int & player_hp , int & bombCount ,
                 }
                 if (player_hp<=0)
                     {
-                        cout<<"You Died Try Again !\n"<<endl;
+                        cout<<"\nYou Died Try Again !\n"<<endl;
                         player_hp=60;
                         enemy_hp=100;
                         if (healingPotionCount == 0)
                         {
                             healingPotionCount+=3;
-                            cout<<"You got 3 Healing potions";
+                            cout<<"\nYou got 3 Healing potions";
                         }
                         if (bombCount == 0)
                         {
                             bombCount+=3;
-                            cout<<"You got 3 Bombs";
+                            cout<<"\nYou got 3 Bombs";
                         }
 
                         continue;
