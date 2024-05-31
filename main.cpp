@@ -866,7 +866,7 @@ char buy;
             {
                 continue;
             }
-        if (item!='h' || item!='H' || item!='b' || item!='B' || item!='m' || item!='M' || item!='e' || item!='E')
+        if (item!='h' && item!='H' && item!='b' && item!='B' && item!='m' && item!='M' && item!='e' && item!='E')
         {
             cout<<"\nYou have "<<coins<<" coins"<<endl;
             cout<<"\nChoose a valid item"<<endl;
